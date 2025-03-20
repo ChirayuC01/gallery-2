@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex flex-col min-h-screen text-black">
         {/* Navbar */}
-        <nav className="bg-white shadow-md py-4">
+        {/* <nav className="bg-white shadow-md py-4">
           <div className="container flex justify-between items-center">
             <Link href="/" className="text-xl font-bold text-black">
               Rana Jain
@@ -36,15 +36,15 @@ export default function RootLayout({
               </Link>
             </div>
           </div>
-        </nav>
+        </nav> */}
 
         {/* Main Content */}
         <main className="container flex-grow py-6">{children}</main>
 
         {/* Footer */}
-        <footer className="bg-gray-800 text-white text-center py-4">
+        {/* <footer className="bg-gray-800 text-white text-center py-4">
           <p>© 2025 Rana Jain. All rights reserved.</p>
-        </footer>
+        </footer> */}
       </body>
     </html>
   );

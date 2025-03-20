@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { mediaList } from "@/lib/mediaList";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
   const images = mediaList.images.Rana_Pics;
   const [activeSlide, setActiveSlide] = useState(0);
   const totalSlides = images.length;
+  const router = useRouter();
 
   // Carousel Controls
   const handlePrev = () =>
@@ -71,10 +73,20 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Movie Section */}
+      <section className="py-16 bg-gray-100 text-center">
+        <h2 className="text-4xl font-bold mb-6">Rana is Born...</h2>
+        <div className="max-w-4xl mx-auto">
+          <video controls className="w-full rounded-lg shadow-lg">
+            <source src="/video/RANA MOVIE SHORT EDIT.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
       {/* Carousel Section */}
       <section className="relative flex flex-col items-center justify-center bg-gray-100 py-16">
-        <h2 className="text-4xl font-bold mb-6">Gallery</h2>
-        <div className="relative w-[500px] h-[350px] overflow-hidden rounded-lg shadow-lg">
+        <h2 className="text-4xl font-bold mb-6">Me and My Family</h2>
+        <div className="relative w-[500px] h-[80vh] overflow-hidden rounded-lg ">
           {images.map((img, index) => (
             <Image
               key={index}
@@ -107,7 +119,7 @@ const Home = () => {
       {/* Cute Clips Section */}
       <section className="py-16 bg-white text-center">
         <h2 className="text-4xl font-bold mb-6">My Cute Clips</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
           {[
             "Face Therapy For ME",
             "First Clsss from Nana - Tongue",
@@ -132,19 +144,13 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Movie Section */}
-      <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-4xl font-bold mb-6">Rana - My Movie</h2>
-        <div className="max-w-4xl mx-auto">
-          <video controls className="w-full rounded-lg shadow-lg">
-            <source src="/video/RANA MOVIE SHORT EDIT.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </section>
-
       {/* Floating Home Button */}
-      <div className="fixed right-6 bottom-6 bg-red-600 text-white p-4 rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all">
-        <h2 className="text-lg font-semibold">Home</h2>
+      {/* Floating Home Button */}
+      <div
+        onClick={() => router.push("/signpost")}
+        className="fixed right-2 top-[50%] bottom-[50%] bg-red-600 text-white p-5 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
+      >
+        <h2 className="text-lg font-semibold">Nana's Signpost for Rana</h2>
       </div>
     </>
   );
