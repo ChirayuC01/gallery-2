@@ -4,13 +4,25 @@ import VideoGallery from "@/components/VideoGallery";
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 
+// Define interfaces for your data structure
+interface TopicPoint {
+  title: string;
+  points: string[];
+}
+
+interface Lesson {
+  id: number;
+  ageRange: string;
+  topics: TopicPoint[];
+}
+
 const LifeLessons = () => {
-  const [activeAge, setActiveAge] = useState(null);
-  const [activeLesson, setActiveLesson] = useState(null); // Track selected lesson
+  const [activeAge, setActiveAge] = useState<number | null>(null);
+  const [activeLesson, setActiveLesson] = useState<Lesson | null>(null); // Track selected lesson
   const [isModalOpen, setIsModalOpen] = useState(false); // Track modal state
   const [activeTab, setActiveTab] = useState<"photos" | "videos">("photos");
 
-  const lessons = [
+  const lessons: Lesson[] = [
     {
       id: 1,
       ageRange: "Years 0-3",
@@ -223,7 +235,7 @@ const LifeLessons = () => {
     },
   ];
 
-  const toggleAge = (id: any) => {
+  const toggleAge = (id: number) => {
     if (activeAge === id) {
       setActiveAge(null);
     } else {
@@ -231,7 +243,7 @@ const LifeLessons = () => {
     }
   };
 
-  const openModal = (lesson: any) => {
+  const openModal = (lesson: Lesson) => {
     setActiveLesson(lesson);
     setIsModalOpen(true);
   };

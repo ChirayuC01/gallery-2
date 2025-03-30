@@ -1,3 +1,4 @@
+"use client";
 import { mediaList } from "@/lib/mediaList";
 import { useState, useEffect } from "react";
 
