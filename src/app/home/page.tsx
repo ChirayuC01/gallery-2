@@ -134,11 +134,11 @@ const Home = () => {
     <>
       <Head>
         <title>Rana's World</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       {/* Family Section */}
-      <section className="py-16 bg-white text-center">
-        {/* <h2 className="text-4xl font-bold mb-6">Me & My Family</h2> */}
+      <section className="py-8 md:py-16 bg-white text-center px-4">
         <div className="max-w-xl mx-auto">
           <Image
             src="/images/main1.jpg"
@@ -156,7 +156,7 @@ const Home = () => {
           <div className="content-container content-theme-dark">
             <div className="content-inner">
               <div className="content-center">
-                <h1>Rana's World</h1>
+                <h1 className="text-2xl md:text-4xl">Rana's World</h1>
                 <p>BEGAN</p>
                 <p>
                   <span className="text-big">23</span> April
@@ -171,7 +171,7 @@ const Home = () => {
           <div className="content-container content-theme-light">
             <div className="content-inner">
               <div className="content-center">
-                <h1>Rana's World</h1>
+                <h1 className="text-2xl md:text-4xl">Rana's World</h1>
                 <p>BEGAN</p>
                 <p>
                   <span className="text-big">23</span> April
@@ -184,10 +184,12 @@ const Home = () => {
       </div>
 
       {/* Movie Section */}
-      <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-4xl font-bold mb-6">Rana is Born...</h2>
-        <div className="w-full max-w-4xl mx-auto h-[500px]">
-          <div className="relative w-full aspect-video">
+      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+          Rana is Born...
+        </h2>
+        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
+          <div className="relative w-full h-full">
             <iframe
               src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
               className="w-full h-full rounded-lg shadow-lg"
@@ -198,9 +200,11 @@ const Home = () => {
       </section>
 
       {/* Carousel Section */}
-      <section className="relative flex flex-col items-center justify-center bg-gray-100 py-16">
-        <h2 className="text-4xl font-bold mb-6">Me and My Family</h2>
-        <div className="relative w-[500px] h-[80vh] overflow-hidden rounded-lg ">
+      <section className="relative flex flex-col items-center justify-center bg-gray-100 py-8 md:py-16 px-4">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+          Me and My Family
+        </h2>
+        <div className="relative w-full md:w-[500px] h-[50vh] md:h-[80vh] overflow-hidden rounded-lg">
           {images.map((img, index) => (
             <Image
               key={index}
@@ -214,16 +218,16 @@ const Home = () => {
             />
           ))}
         </div>
-        <div className="flex gap-4 mt-6">
+        <div className="flex gap-4 mt-4 md:mt-6">
           <button
             onClick={handlePrev}
-            className="bg-gray-700 text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-900 transition-all"
+            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all"
           >
             ◀
           </button>
           <button
             onClick={handleNext}
-            className="bg-gray-700 text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-900 transition-all"
+            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all"
           >
             ▶
           </button>
@@ -231,9 +235,11 @@ const Home = () => {
       </section>
 
       {/* Cute Clips Section */}
-      <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-4xl font-bold mb-6">My Cute Clips</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+          My Cute Clips
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6 max-w-6xl mx-auto">
           {[
             "Face Therapy For ME",
             "First Clsss from Nana - Tongue",
@@ -244,7 +250,7 @@ const Home = () => {
           ].map((title, index) => (
             <div
               key={index}
-              className="border rounded-lg p-3 shadow-md hover:shadow-lg transition-all"
+              className="border rounded-lg p-2 md:p-3 shadow-md hover:shadow-lg transition-all"
             >
               <video controls className="w-full rounded-md">
                 <source
@@ -254,16 +260,20 @@ const Home = () => {
                   type="video/mp4"
                 />
               </video>
-              <p className="mt-2 text-black text-sm font-semibold">{title}</p>
+              <p className="mt-2 text-black text-xs md:text-sm font-semibold">
+                {title}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-4xl font-bold mb-6">Rana is One</h2>
-        <div className="w-full max-w-4xl mx-auto h-[500px]">
-          <div className="relative w-full aspect-video">
+      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+          Rana is One
+        </h2>
+        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
+          <div className="relative w-full h-full">
             <iframe
               src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
               className="w-full h-full rounded-lg shadow-lg"
@@ -278,7 +288,9 @@ const Home = () => {
         onClick={handleSignpostClick}
         className="fixed right-2 top-[50%] bottom-[50%] bg-red-600 text-white p-5 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
       >
-        <h2 className="text-lg font-semibold">Nana's Signpost for Rana</h2>
+        <h2 className="text-sm md:text-lg font-semibold">
+          Nana's Signpost for Rana
+        </h2>
       </div>
 
       {/* Login Modal */}
