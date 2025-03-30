@@ -3,7 +3,7 @@ const path = require("path");
 
 // Paths for images and video directories
 const imagesDir = path.join(__dirname, "public/images");
-const videoDir = path.join(__dirname, "public/video");
+// const videoDir = path.join(__dirname, "public/video");
 
 // Output file path
 const outputFile = path.join(__dirname, "/src/lib/mediaList.ts");
@@ -35,14 +35,21 @@ const getMediaFiles = (dir, baseUrl) => {
 
 // Get image and video files
 const images = getMediaFiles(imagesDir, "/images");
-const video = getMediaFiles(videoDir, "/video");
+// const video = getMediaFiles(videoDir, "/video");
 
+// // Generate TypeScript file
+// const tsContent = `// Auto-generated file. Do not edit manually.
+
+// export const mediaList = {
+//   images: ${JSON.stringify(images, null, 2)},
+//   video: ${JSON.stringify(video, null, 2)}
+// };
+// `;
 // Generate TypeScript file
 const tsContent = `// Auto-generated file. Do not edit manually.
 
 export const mediaList = {
   images: ${JSON.stringify(images, null, 2)},
-  video: ${JSON.stringify(video, null, 2)}
 };
 `;
 

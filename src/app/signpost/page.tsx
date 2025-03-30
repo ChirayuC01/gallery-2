@@ -299,54 +299,65 @@ const LifeLessons = () => {
               </h2>
 
               {/* Topics Display */}
-              {activeLesson.topics.map((topic, index) => (
-                <div key={index} className="mb-6 last:mb-0">
-                  <h3 className="text-xl font-semibold mb-2 text-indigo-600">
-                    {topic.title}
-                  </h3>
-                  {topic.points.length > 0 ? (
-                    <ul className="space-y-2">
-                      {topic.points.map((point, idx) => (
-                        <li
-                          key={idx}
-                          className="pl-4 border-l-2 border-indigo-300"
-                        >
-                          <p className="text-gray-700">{point}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="text-gray-500 italic">No details provided.</p>
-                  )}
-                </div>
-              ))}
+              {activeLesson.topics.map((topic, index) => {
+                console.log("topic----", topic, index);
+                console.log("activeLesson----", activeLesson);
+                console.log("activeAge----", activeAge);
+
+                return (
+                  <div key={index} className="mb-6 last:mb-0">
+                    <h3 className="text-xl font-semibold mb-2 text-indigo-600">
+                      {topic.title}
+                    </h3>
+                    {topic.points.length > 0 ? (
+                      <ul className="space-y-2">
+                        {topic.points.map((point, idx) => (
+                          <li
+                            key={idx}
+                            className="pl-4 border-l-2 border-indigo-300"
+                          >
+                            <p className="text-gray-700">{point}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-500 italic">
+                        No details provided.
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
 
               {/* Toggle Buttons */}
-              <div className="flex gap-4 my-4">
-                <button
-                  className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
-                    activeTab === "photos"
-                      ? "bg-indigo-600"
-                      : "bg-gray-400 hover:bg-gray-500"
-                  }`}
-                  onClick={() => setActiveTab("photos")}
-                >
-                  Photos
-                </button>
-                <button
-                  className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
-                    activeTab === "videos"
-                      ? "bg-indigo-600"
-                      : "bg-gray-400 hover:bg-gray-500"
-                  }`}
-                  onClick={() => setActiveTab("videos")}
-                >
-                  Videos
-                </button>
-              </div>
-
-              {/* Conditional Rendering */}
-              {activeTab === "photos" ? <Gallery /> : <VideoGallery />}
+              {activeLesson.ageRange === "Years 0-3" && (
+                <>
+                  <div className="flex gap-4 my-4">
+                    <button
+                      className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
+                        activeTab === "photos"
+                          ? "bg-indigo-600"
+                          : "bg-gray-400 hover:bg-gray-500"
+                      }`}
+                      onClick={() => setActiveTab("photos")}
+                    >
+                      Photos
+                    </button>
+                    <button
+                      className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
+                        activeTab === "videos"
+                          ? "bg-indigo-600"
+                          : "bg-gray-400 hover:bg-gray-500"
+                      }`}
+                      onClick={() => setActiveTab("videos")}
+                    >
+                      Videos
+                    </button>
+                  </div>
+                  {/* Conditional Rendering */}
+                  {activeTab === "photos" ? <Gallery /> : <VideoGallery />}
+                </>
+              )}
             </div>
           </div>
         )}
