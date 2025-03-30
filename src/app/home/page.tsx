@@ -4,6 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import { mediaList } from "@/lib/mediaList";
 import { useRouter } from "next/navigation";
+import { encodeSpaces } from "@/helpers/encodeUrl";
 
 const Home = () => {
   const images = mediaList.images.Rana_Pics;
@@ -43,43 +44,58 @@ const Home = () => {
       </section>
 
       {/* Hero Section */}
-      <section className="section top-section">
-        <div className="content-container content-theme-dark">
-          <div className="content-inner">
-            <div className="content-center">
-              <h1>Rana's World</h1>
-              <p>BEGAN</p>
-              <p>
-                <span className="text-big">23</span> April
-                <span className="text-big">23</span>
-              </p>
+      <div>
+        <section className="section top-section">
+          <div className="content-container content-theme-dark">
+            <div className="content-inner">
+              <div className="content-center">
+                <h1>Rana's World</h1>
+                <p>BEGAN</p>
+                <p>
+                  <span className="text-big">23</span> April
+                  <span className="text-big">23</span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section bottom-section">
-        <div className="content-container content-theme-light">
-          <div className="content-inner">
-            <div className="content-center">
-              <h1>Rana's World</h1>
-              <p>BEGAN</p>
-              <p>
-                <span className="text-big">23</span> April
-                <span className="text-big">23</span>
-              </p>
+        <section className="section bottom-section">
+          <div className="content-container content-theme-light">
+            <div className="content-inner">
+              <div className="content-center">
+                <h1>Rana's World</h1>
+                <p>BEGAN</p>
+                <p>
+                  <span className="text-big">23</span> April
+                  <span className="text-big">23</span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Movie Section */}
-      <section className="py-16 bg-gray-100 text-center">
+      {/* <section className="py-16 bg-gray-100 text-center">
         <h2 className="text-4xl font-bold mb-6">Rana is Born...</h2>
         <div className="max-w-4xl mx-auto">
           <video controls className="w-full rounded-lg shadow-lg">
             <source src="/video/RANA MOVIE SHORT EDIT.mp4" type="video/mp4" />
           </video>
+        </div>
+      </section> */}
+
+      <section className="py-16 bg-gray-100 text-center">
+        <h2 className="text-4xl font-bold mb-6">Rana is Born...</h2>
+        <div className="w-full max-w-4xl mx-auto h-[500px]">
+          <div className="relative w-full aspect-video">
+            <iframe
+              src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
+              className="w-full h-full rounded-lg shadow-lg"
+              allow="autoplay"
+            ></iframe>
+          </div>
         </div>
       </section>
 
@@ -117,7 +133,7 @@ const Home = () => {
       </section>
 
       {/* Cute Clips Section */}
-      <section className="py-16 bg-white text-center">
+      <section className="py-16 bg-gray-100 text-center">
         <h2 className="text-4xl font-bold mb-6">My Cute Clips</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
           {[
@@ -126,7 +142,7 @@ const Home = () => {
             "Morning Class 1",
             "Morning Exercise",
             "Squareface Rana",
-            "The Crying Sausage",
+            "The Crying sausage",
           ].map((title, index) => (
             <div
               key={index}
@@ -134,13 +150,28 @@ const Home = () => {
             >
               <video controls className="w-full rounded-md">
                 <source
-                  src={`/video/Rana Clips/${title}.mp4`}
+                  src={`https://ranajainwebsite.blob.core.windows.net/home/Rana%20Clips/${encodeSpaces(
+                    title
+                  )}.mp4`}
                   type="video/mp4"
                 />
               </video>
               <p className="mt-2 text-black text-sm font-semibold">{title}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-100 text-center">
+        <h2 className="text-4xl font-bold mb-6">Rana is One</h2>
+        <div className="w-full max-w-4xl mx-auto h-[500px]">
+          <div className="relative w-full aspect-video">
+            <iframe
+              src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
+              className="w-full h-full rounded-lg shadow-lg"
+              allow="autoplay"
+            ></iframe>
+          </div>
         </div>
       </section>
 
