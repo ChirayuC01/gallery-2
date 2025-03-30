@@ -1,13 +1,14 @@
 "use client";
 import { mediaList } from "@/lib/mediaList";
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2, X } from "lucide-react";
 
 export default function VideoGallery() {
   const videos = mediaList.video["Rana's What's app Videos"] || [];
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [thumbnails, setThumbnails] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const generateThumbnails = async () => {
@@ -50,6 +51,7 @@ export default function VideoGallery() {
     if (selectedIndex !== null) {
       setLoading(true);
       setSelectedIndex((prev) => (prev! + 1) % videos.length);
+      setIsExpanded(false);
     }
   };
 
@@ -57,40 +59,55 @@ export default function VideoGallery() {
     if (selectedIndex !== null) {
       setLoading(true);
       setSelectedIndex((prev) => (prev! - 1 + videos.length) % videos.length);
+      setIsExpanded(false);
     }
   };
 
   return (
     <div className="container mx-auto md:p-4">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+        Video Gallery
+      </h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {videos.map((video, index) => {
           const url = video.replace(/ /g, "%20");
           const videoName = video.split("/").pop()?.replace(/.mp4$/, "");
 
           return (
-            <button
+            <div
               key={index}
-              className="relative border rounded-lg overflow-hidden hover:shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110"
+              className="relative border rounded-lg overflow-hidden hover:shadow-lg cursor-pointer flex flex-col items-center"
               onClick={() => {
                 setSelectedIndex(index);
                 setLoading(true);
+                setIsExpanded(false);
               }}
             >
               {thumbnails[url] ? (
                 <img
-                  className="w-full h-40 object-cover"
+                  className="w-full h-40 object-cover rounded-md"
                   src={thumbnails[url]}
                   alt={videoName}
                 />
               ) : (
-                <div className="w-full h-40 bg-gray-300 flex items-center justify-center">
-                  Loading...
-                </div>
+                <video
+                  className="w-full h-40 object-cover rounded-md"
+                  src={url}
+                  muted
+                  loop
+                  playsInline
+                />
               )}
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-sm font-semibold">
+
+              {/* Video Title (Truncated) */}
+              <p
+                className="text-center text-sm mt-2 font-medium text-gray-700 w-full truncate px-2"
+                title={videoName} // Show full title on hover
+              >
                 {videoName}
-              </div>
-            </button>
+              </p>
+            </div>
           );
         })}
       </div>
@@ -101,10 +118,10 @@ export default function VideoGallery() {
           <div className="w-full max-w-2xl">
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 text-white text-2xl p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
+              className="absolute top-2 right-2 text-black text-2xl bg-gray-200 hover:bg-gray-300 p-2 rounded-full cursor-pointer"
               onClick={() => setSelectedIndex(null)}
             >
-              ✖
+              <X />
             </button>
 
             {/* Previous Button */}
@@ -112,7 +129,7 @@ export default function VideoGallery() {
               className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/40 transition-all"
               onClick={showPrevVideo}
             >
-              <ChevronLeft className="w-8 h-8 text-white" />
+              <ChevronLeft className="w-8 h-8 text-white cursor-pointer" />
             </button>
 
             {/* Loader */}
@@ -125,7 +142,7 @@ export default function VideoGallery() {
             {/* Video Player (Force reload with key) */}
             <video
               key={videos[selectedIndex]} // 🔥 Forces video to reload on src change
-              className="w-full h-auto max-h-[90vh]"
+              className="w-full h-auto max-h-[90vh] rounded-lg"
               controls
               autoPlay
               onLoadedData={() => setLoading(false)}
@@ -133,12 +150,27 @@ export default function VideoGallery() {
               <source src={videos[selectedIndex]} type="video/mp4" />
             </video>
 
+            {/* Video Title (Expandable on Click) */}
+            <p
+              className={`text-center text-lg font-semibold mt-3 text-white cursor-pointer ${
+                isExpanded ? "whitespace-normal break-words" : "truncate"
+              }`}
+              onClick={() => setIsExpanded(!isExpanded)}
+              title={
+                isExpanded
+                  ? ""
+                  : videos[selectedIndex].split("/").pop()?.replace(/.mp4$/, "")
+              }
+            >
+              {videos[selectedIndex].split("/").pop()?.replace(/.mp4$/, "")}
+            </p>
+
             {/* Next Button */}
             <button
               className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white/20 backdrop-blur-md hover:bg-white/40 transition-all"
               onClick={showNextVideo}
             >
-              <ChevronRight className="w-8 h-8 text-white" />
+              <ChevronRight className="w-8 h-8 text-white cursor-pointer" />
             </button>
           </div>
         </div>
