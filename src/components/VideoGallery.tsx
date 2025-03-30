@@ -1,115 +1,98 @@
-"use client";
-
-import { useState, useEffect, useRef, useCallback } from "react";
-import dynamic from "next/dynamic";
 import { mediaList } from "@/lib/mediaList";
-import { extractThumbnail } from "@/utils/extractThumbnail";
+import { useState, useEffect } from "react";
 
-const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
-
-const VideoGallery = () => {
+export default function VideoGallery() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [thumbnails, setThumbnails] = useState<{ [key: string]: string }>({});
-  const videoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  const placeholder = "/placeholder.jpg"; // Default thumbnail before generation
-
-  // Extract all videos from categories
-  const videoList = Object.entries(mediaList.video).flatMap(([_, videos]) =>
-    videos.map((videoUrl) => ({ url: videoUrl }))
-  );
-
-  // Intersection Observer callback
-  const handleIntersection = useCallback(
-    async (entries: IntersectionObserverEntry[]) => {
+  useEffect(() => {
+    const generateThumbnails = async () => {
       const newThumbnails: { [key: string]: string } = {};
 
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          const videoUrl = entry.target.getAttribute("data-url");
-          if (videoUrl && !thumbnails[videoUrl]) {
-            try {
-              const thumbnail = await extractThumbnail(videoUrl);
-              newThumbnails[videoUrl] = thumbnail;
-            } catch (error) {
-              console.error("Error generating thumbnail:", error);
-              newThumbnails[videoUrl] = placeholder;
-            }
-          }
-        }
+      const videos = mediaList.video["Rana's What's app Videos"] || [];
+      for (const videoUrl of videos) {
+        const url = videoUrl.replace(/ /g, "%20");
+
+        await new Promise((resolve) => {
+          const video = document.createElement("video");
+          video.src = url;
+          video.crossOrigin = "anonymous";
+          video.muted = true;
+          video.preload = "metadata"; // Load only metadata first
+          video.currentTime = 2; // Capture frame at 2 seconds
+
+          video.addEventListener("loadeddata", () => {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            if (!ctx) return resolve(null);
+
+            canvas.width = video.videoWidth / 2;
+            canvas.height = video.videoHeight / 2;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            newThumbnails[url] = canvas.toDataURL("image/jpeg");
+            setThumbnails((prev) => ({ ...prev, [url]: newThumbnails[url] }));
+            resolve(null);
+          });
+
+          video.addEventListener("error", () => resolve(null));
+        });
       }
+    };
 
-      if (Object.keys(newThumbnails).length > 0) {
-        setThumbnails((prev) => ({ ...prev, ...newThumbnails }));
-      }
-    },
-    [thumbnails]
-  );
+    generateThumbnails();
+  }, []);
 
-  // Initialize Intersection Observer
-  useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersection, {
-      root: null, // Observe within viewport
-      rootMargin: "100px", // Preload thumbnails before they appear
-      threshold: 0.5, // 50% visibility before loading
-    });
-
-    Object.values(videoRefs.current).forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [handleIntersection, videoList]);
+  const videos = mediaList.video["Rana's What's app Videos"] || [];
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Video Gallery</h1>
+      {/* <h2 className="text-2xl font-bold mb-4">Rana's WhatsApp Videos</h2> */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        {videos.map((video, index) => {
+          const url = video.replace(/ /g, "%20");
+          const videoName = video.split("/").pop()?.replace(/.mp4$/, "");
 
-      {/* Video Thumbnails */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {videoList.map((video, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              videoRefs.current[video.url] = el;
-            }}
-            data-url={video.url}
-            className="relative w-full h-40 overflow-hidden rounded-lg shadow-md cursor-pointer"
-            onClick={() => setSelectedVideo(video.url)}
-          >
-            <ReactPlayer
-              url={video.url}
-              light={thumbnails[video.url] || placeholder} // Show generated thumbnail
-              width="100%"
-              height="100%"
-              playIcon={<button className="text-white text-4xl">▶</button>}
-            />
-          </div>
-        ))}
+          return (
+            <button
+              key={index}
+              className="relative border rounded-lg overflow-hidden hover:shadow-lg cursor-pointer transition-transform duration-300 hover:scale-110"
+              onClick={() => setSelectedVideo(url)}
+            >
+              {thumbnails[url] ? (
+                <img
+                  className="w-full h-40 object-cover"
+                  src={thumbnails[url]}
+                  alt={videoName}
+                />
+              ) : (
+                <div className="w-full h-40 bg-gray-300 flex items-center justify-center">
+                  Loading...
+                </div>
+              )}
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-sm font-semibold">
+                {videoName}
+              </div>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Video Player Modal */}
       {selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="w-4/5 md:w-3/5 lg:w-2/5">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4">
+          <div className="w-full max-w-2xl">
             <button
-              className="absolute top-2 right-2 text-white text-2xl"
+              className="absolute top-2 right-2 text-white text-2xl cursor-pointer"
               onClick={() => setSelectedVideo(null)}
             >
               ✖
             </button>
-            <ReactPlayer
-              url={selectedVideo}
-              controls
-              playing
-              width="100%"
-              height="100%"
-            />
+            <video className="w-full h-auto max-h-[90vh]" controls autoPlay>
+              <source src={selectedVideo} type="video/mp4" />
+            </video>
           </div>
         </div>
       )}
     </div>
   );
-};
-
-export default VideoGallery;
+}

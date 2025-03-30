@@ -1,10 +1,101 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { mediaList } from "@/lib/mediaList";
 import { useRouter } from "next/navigation";
 import { encodeSpaces } from "@/helpers/encodeUrl";
+
+// Login Modal Component
+const LoginModal = ({ isOpen, onClose, onSubmit }: any) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setError("");
+
+    // Add your authentication logic here
+    // This is a simple example - replace with your actual authentication
+    if (username === "chachu" && password === "dadarananana") {
+      onSubmit(true);
+    } else {
+      setError("Invalid username or password");
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.3)", // Adjust opacity as needed
+      }}
+      className="fixed inset-0 flex items-center justify-center z-50"
+    >
+      <div className="bg-white rounded-lg shadow-lg max-w-md w-full space-y-1">
+        <div className="p-8">
+          <h2 className="text-2xl font-bold mb-6">Please Login To View</h2>
+
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              {error}
+            </div>
+          )}
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">
+                User name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                placeholder="User name"
+                required
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-gray-700 mb-2">
+                Password <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                placeholder="Your password"
+                required
+              />
+            </div>
+
+            <div className="flex justify-center items-center">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                SUBMIT
+              </button>
+            </div>
+          </form>
+        </div>
+        <hr className="text-[#dee2e6]" />
+        <div className="flex justify-end p-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   const images = mediaList.images.Rana_Pics;
@@ -12,11 +103,27 @@ const Home = () => {
   const totalSlides = images.length;
   const router = useRouter();
 
+  // Login modal state
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   // Carousel Controls
   const handlePrev = () =>
     setActiveSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   const handleNext = () =>
     setActiveSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+
+  // Handle login success
+  const handleLoginSuccess = (success: any) => {
+    if (success) {
+      setIsLoginModalOpen(false);
+      router.push("/signpost");
+    }
+  };
+
+  // Handle signpost button click
+  const handleSignpostClick = () => {
+    setIsLoginModalOpen(true);
+  };
 
   useEffect(() => {
     const interval = setInterval(handleNext, 5000);
@@ -77,15 +184,6 @@ const Home = () => {
       </div>
 
       {/* Movie Section */}
-      {/* <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-4xl font-bold mb-6">Rana is Born...</h2>
-        <div className="max-w-4xl mx-auto">
-          <video controls className="w-full rounded-lg shadow-lg">
-            <source src="/video/RANA MOVIE SHORT EDIT.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </section> */}
-
       <section className="py-16 bg-gray-100 text-center">
         <h2 className="text-4xl font-bold mb-6">Rana is Born...</h2>
         <div className="w-full max-w-4xl mx-auto h-[500px]">
@@ -176,13 +274,19 @@ const Home = () => {
       </section>
 
       {/* Floating Home Button */}
-      {/* Floating Home Button */}
       <div
-        onClick={() => router.push("/signpost")}
+        onClick={handleSignpostClick}
         className="fixed right-2 top-[50%] bottom-[50%] bg-red-600 text-white p-5 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
       >
         <h2 className="text-lg font-semibold">Nana's Signpost for Rana</h2>
       </div>
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        onSubmit={handleLoginSuccess}
+      />
     </>
   );
 };
