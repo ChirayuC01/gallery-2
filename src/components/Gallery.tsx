@@ -108,15 +108,19 @@ const Gallery = () => {
             />
 
             {/* Image Title (Expandable on Click) */}
-            <p
-              className={`text-center text-lg font-semibold mt-3 text-gray-800 max-w-full cursor-pointer ${
-                isExpanded ? "whitespace-normal break-words" : "truncate"
-              }`}
-              onClick={() => setIsExpanded(!isExpanded)}
-              title={isExpanded ? "" : images[selectedIndex].title} // Tooltip for truncated text
-            >
-              {images[selectedIndex].title}
-            </p>
+            {/* Check if the title is valid before displaying */}
+{ /^[a-zA-Z0-9\s-]+$/.test(images[selectedIndex].title) && (
+  <p
+    className={`text-center text-lg font-semibold mt-3 text-gray-800 max-w-full cursor-pointer ${
+      isExpanded ? "whitespace-normal break-words" : "truncate"
+    }`}
+    onClick={() => setIsExpanded(!isExpanded)}
+    title={isExpanded ? "" : images[selectedIndex].title}
+  >
+    {images[selectedIndex].title}
+  </p>
+)}
+
 
             {/* Next Button */}
             <button
