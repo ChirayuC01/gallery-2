@@ -34,6 +34,11 @@ const Gallery = () => {
     }
   };
 
+  // Helper function to determine if a title should be displayed
+  const shouldDisplayTitle = (title: any) => {
+    return !title.startsWith("IMG-");
+  };
+
   return (
     <div className="container mx-auto md:p-6">
       <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
@@ -59,13 +64,15 @@ const Gallery = () => {
               height={300}
               className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110 rounded-md"
             />
-            {/* Image Title (Truncated) */}
-            <p
-              className="text-center text-sm mt-2 font-medium text-gray-700 w-full truncate px-2"
-              title={title} // Show full title on hover
-            >
-              {title}
-            </p>
+            {/* Image Title (Truncated) - Only show if it doesn't start with IMG- */}
+            {shouldDisplayTitle(title) && (
+              <p
+                className="text-center text-sm mt-2 font-medium text-gray-700 w-full truncate px-2"
+                title={title} // Show full title on hover
+              >
+                {title}
+              </p>
+            )}
           </div>
         ))}
       </div>
@@ -107,20 +114,18 @@ const Gallery = () => {
               onLoadingComplete={() => setLoading(false)}
             />
 
-            {/* Image Title (Expandable on Click) */}
-            {/* Check if the title is valid before displaying */}
-{ /^[a-zA-Z0-9\s-]+$/.test(images[selectedIndex].title) && (
-  <p
-    className={`text-center text-lg font-semibold mt-3 text-gray-800 max-w-full cursor-pointer ${
-      isExpanded ? "whitespace-normal break-words" : "truncate"
-    }`}
-    onClick={() => setIsExpanded(!isExpanded)}
-    title={isExpanded ? "" : images[selectedIndex].title}
-  >
-    {images[selectedIndex].title}
-  </p>
-)}
-
+            {/* Image Title (Expandable on Click) - Only show if it doesn't start with IMG- */}
+            {shouldDisplayTitle(images[selectedIndex].title) && (
+              <p
+                className={`text-center text-lg font-semibold mt-3 text-gray-800 max-w-full cursor-pointer ${
+                  isExpanded ? "whitespace-normal break-words" : "truncate"
+                }`}
+                onClick={() => setIsExpanded(!isExpanded)}
+                title={isExpanded ? "" : images[selectedIndex].title}
+              >
+                {images[selectedIndex].title}
+              </p>
+            )}
 
             {/* Next Button */}
             <button

@@ -5,6 +5,8 @@ import Head from "next/head";
 import { mediaList } from "@/lib/mediaList";
 import { useRouter } from "next/navigation";
 import { encodeSpaces } from "@/helpers/encodeUrl";
+import MyCuteClips from "@/components/Home/MyCuteClips";
+import RanaIsTwo from "@/components/Home/RanaIsTwo";
 
 // Login Modal Component
 const LoginModal = ({ isOpen, onClose, onSubmit }: any) => {
@@ -183,6 +185,37 @@ const Home = () => {
         </section>
       </div>
 
+      {/* <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+          Rana is two
+        </h2>
+        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
+          <div className="relative w-full h-full">
+            <iframe
+              src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
+              className="w-full h-full rounded-lg shadow-lg"
+              allow="autoplay"
+            ></iframe>
+          </div>
+        </div>
+      </section> */}
+      <RanaIsTwo />
+
+      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+          Rana is One
+        </h2>
+        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
+          <div className="relative w-full h-full">
+            <iframe
+              src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
+              className="w-full h-full rounded-lg shadow-lg"
+              allow="autoplay"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       {/* Movie Section */}
       <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
         <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
@@ -235,7 +268,7 @@ const Home = () => {
       </section>
 
       {/* Cute Clips Section */}
-      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+      {/* <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
         <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
           My Cute Clips
         </h2>
@@ -266,30 +299,25 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
-        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
-          Rana is One
-        </h2>
-        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
-          <div className="relative w-full h-full">
-            <iframe
-              src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
-              className="w-full h-full rounded-lg shadow-lg"
-              allow="autoplay"
-            ></iframe>
-          </div>
-        </div>
-      </section>
+      </section> */}
+      <MyCuteClips />
 
       {/* Floating Home Button */}
-      <div
+      {/* <div
         onClick={handleSignpostClick}
         className="fixed right-2 top-[50%] bottom-[50%] bg-red-600 text-white p-5 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
       >
         <h2 className="text-sm md:text-lg font-semibold">
           Nana's Signpost for Rana
+        </h2>
+      </div> */}
+      {/* Floating Home Button */}
+      <div
+        onClick={() => router.push("/gallery")}
+        className="fixed right-2 bottom-[5%] bg-red-600 text-white p-2 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
+      >
+        <h2 className="text-sm md:text-lg font-semibold">
+          Rana's Photo & Video Gallery
         </h2>
       </div>
 
