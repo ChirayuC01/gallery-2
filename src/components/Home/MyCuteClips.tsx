@@ -8,8 +8,6 @@ const MyCuteClips = () => {
     "Morning Exercise",
     "Squareface Rana",
     "The Crying sausage",
-    "More Cuteness",
-    "Another Video",
   ];
 
   const encodeSpaces = (str: string) => encodeURIComponent(str);
