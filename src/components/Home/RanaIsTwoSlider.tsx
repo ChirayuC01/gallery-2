@@ -68,20 +68,15 @@ export default function VideoCarousel() {
           modules={[Navigation]}
           spaceBetween={20}
           navigation
-          slidesPerView={1}
+          slidesPerView={1.2}
           breakpoints={{
-            640: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 3 },
+            640: { slidesPerView: 3.2 }, // 3 full slides + peek at 4th on larger screens
           }}
-          // Add these properties for better mobile experience
           grabCursor={true}
-          freeMode={true}
           initialSlide={0}
           touchEventsTarget="container"
           cssMode={true}
-          className="swiper-mobile-scroll"
+          className="carousel-with-peek"
         >
           {videoLinks.map((video, index) => (
             <SwiperSlide key={index} className="pb-6">
@@ -117,28 +112,49 @@ export default function VideoCarousel() {
       </div>
 
       <style jsx global>{`
-        .swiper-mobile-scroll {
+        .carousel-with-peek {
           padding-bottom: 10px;
           padding-left: 5px;
           padding-right: 5px;
+          overflow: visible !important;
         }
         
-        /* Improve navigation buttons visibility on mobile */
+        /* Visual indicator of more content */
+        .swiper-slide {
+          transition: opacity 0.3s ease;
+        }
+        
+        /* Partial slide should be slightly dimmed to focus on full slides */
+        .swiper-slide-visible:not(.swiper-slide-active):not(.swiper-slide-next):not(.swiper-slide-next + .swiper-slide) {
+          opacity: 0.7;
+        }
+        
+        @media (max-width: 639px) {
+          /* On mobile, only dim slides beyond the 2nd slide */
+          .swiper-slide-visible:not(.swiper-slide-active):not(.swiper-slide-next) {
+            opacity: 0.7;
+          }
+        }
+        
+        /* Improve navigation buttons visibility */
         .swiper-button-next,
         .swiper-button-prev {
           color: #334155;
           background: rgba(255, 255, 255, 0.8);
           border-radius: 50%;
-          width: 30px;
-          height: 30px;
+          width: 40px;
+          height: 40px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
         
         .swiper-button-next:after,
         .swiper-button-prev:after {
-          font-size: 16px;
+          font-size: 18px;
+          font-weight: bold;
         }
         
-        @media (max-width: 640px) {
+        /* Hide navigation on mobile */
+        @media (max-width: 639px) {
           .swiper-button-next,
           .swiper-button-prev {
             display: none;
