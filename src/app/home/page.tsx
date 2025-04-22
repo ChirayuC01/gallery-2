@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { encodeSpaces } from "@/helpers/encodeUrl";
 import MyCuteClips from "@/components/Home/MyCuteClips";
 import RanaIsTwo from "@/components/Home/RanaIsTwo";
-
+import RanaIsTwoSlider from "@/components/Home/RanaIsTwoSlider";
 // Login Modal Component
 const LoginModal = ({ isOpen, onClose, onSubmit }: any) => {
   const [username, setUsername] = useState("");
@@ -184,6 +184,7 @@ const Home = () => {
           </div>
         </section>
       </div>
+      <RanaIsTwoSlider />
 
       {/* <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
         <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
@@ -192,14 +193,23 @@ const Home = () => {
         <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
           <div className="relative w-full h-full">
             <iframe
-              src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
+              src="https://drive.google.com/file/d/1XLmj3EG20JQS39sC2F7fAWibxfd12Pze/preview"
+              className="w-full h-full rounded-lg shadow-lg"
+              allow="autoplay"allowFullScreen={true}
+            ></iframe>
+          </div>
+        </div>
+        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
+          <div className="relative w-full h-full">
+          <iframe
+              src="https://drive.google.com/file/d/1yTOn87kIpiENrBjy8Y_1Ya9smMrMyPdH/preview"
               className="w-full h-full rounded-lg shadow-lg"
               allow="autoplay"
             ></iframe>
           </div>
         </div>
       </section> */}
-      <RanaIsTwo />
+      {/* <RanaIsTwo /> */}
 
       <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
         <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
@@ -211,6 +221,7 @@ const Home = () => {
               src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
               className="w-full h-full rounded-lg shadow-lg"
               allow="autoplay"
+              allowFullScreen={true}
             ></iframe>
           </div>
         </div>
@@ -227,6 +238,7 @@ const Home = () => {
               src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
               className="w-full h-full rounded-lg shadow-lg"
               allow="autoplay"
+              allowFullScreen={true}
             ></iframe>
           </div>
         </div>
