@@ -36,7 +36,7 @@ const Gallery = () => {
 
   // Helper function to determine if a title should be displayed
   const shouldDisplayTitle = (title: any) => {
-    return !title.startsWith("IMG-");
+    return !title.startsWith("IMG-") && !title.startsWith("WhatsApp Image");
   };
 
   return (

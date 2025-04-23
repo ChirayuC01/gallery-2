@@ -1,6 +1,9 @@
 // Auto-generated file. Do not edit manually.
 
-export const mediaList: { images: Record<string, string[]>, video: Record<string, string[]> } = {
+export const mediaList: {
+  images: Record<string, string[]>;
+  video: Record<string, string[]>;
+} = {
   images: {
     // "root": [
     //   "/images/background.png",
@@ -119,7 +122,7 @@ export const mediaList: { images: Record<string, string[]>, video: Record<string
       "/images/Rana's What's app Photos/In the pool 1.jpeg",
       "/images/Rana's What's app Photos/Inspection team with his sister.jpeg",
       "/images/Rana's What's app Photos/Jungle Baby.jpeg",
-      "/images/Rana's What's app Photos/Kya Baat Hai Bhai",
+      "/images/Rana's What's app Photos/Kya Baat Hai Bhai.jpg",
       "/images/Rana's What's app Photos/kz-Axcf_VHNOp5_km0O6zDxSjihCDRvUmpViKjeA2OQ=_plaintext_638203427515853156.jpg",
       "/images/Rana's What's app Photos/Learning to stand.jpeg",
       "/images/Rana's What's app Photos/Lil Santa.jpeg",
@@ -169,7 +172,6 @@ export const mediaList: { images: Record<string, string[]>, video: Record<string
       "/images/Rana's What's app Photos/Rana Sandwich.jpeg",
       "/images/Rana's What's app Photos/Rana's 1st Cuddly Toy.jpeg",
       "/images/Rana's What's app Photos/Ranas Nana.jpeg",
-      "/images/Rana's What's app Photos/Same expression as RK.jpeg",
       "/images/Rana's What's app Photos/Santa & his tree.jpeg",
       "/images/Rana's What's app Photos/Serious conversation with friends.jpeg",
       "/images/Rana's What's app Photos/Shining Roundly.jpeg",
@@ -201,8 +203,6 @@ export const mediaList: { images: Record<string, string[]>, video: Record<string
       "/images/Rana's What's app Photos/WhatsApp Image 2023-07-18 at 11.47.03.jpeg",
       "/images/Rana's What's app Photos/WhatsApp Image 2023-07-18 at 11.47.16.jpeg",
       "/images/Rana's What's app Photos/WhatsApp Image 2023-07-18 at 11.47.34.jpeg",
-      "/images/Rana's What's app Photos/WhatsApp Image 2023-08-22 at 10.28.17.jpeg",
-      "/images/Rana's What's app Photos/WhatsApp Image 2023-08-22 at 10.35.30.jpeg",
       "/images/Rana's What's app Photos/WhatsApp Image 2023-09-11 at 00.26.19.jpg",
       "/images/Rana's What's app Photos/WhatsApp Image 2023-09-11 at 00.29.06.jpg",
       "/images/Rana's What's app Photos/WhatsApp Image 2023-09-11 at 00.29.07.jpg",
@@ -217,9 +217,9 @@ export const mediaList: { images: Record<string, string[]>, video: Record<string
       "/images/Rana's What's app Photos/xKYgIVIRMSmqC9u2bVMSBgajFuHc0p7poBwBeQPnlYk=_plaintext_638203426863031034.jpg",
       "/images/Rana's What's app Photos/ZO1t5Ew_IPL2hf8R9xRwmkYq0XZWJo8LPaAkFRQgm-o=_plaintext_638203427519096122.jpg",
       "/images/Rana's What's app Photos/मोटा Seth.jpeg",
-      "/images/Rana's What's app Photos/मोटा,मोटा seth.jpeg"
+      "/images/Rana's What's app Photos/मोटा,मोटा seth.jpeg",
     ],
-    "Rana_Pics": [
+    Rana_Pics: [
       "/images/Rana_Pics/1zn2rtMfXW7vh5ID9SNmWRNr6yKe53zvKP-ltpH3SWE=_plaintext_638203426794763696.jpg",
       "/images/Rana_Pics/4 Jain Generations.jpg",
       "/images/Rana_Pics/4WvoGZ-WvUCDkoDPNOoSA1112KhGVeCQw3vjvQMzxQ8=_plaintext_638203427461441609.jpg",
@@ -291,11 +291,9 @@ export const mediaList: { images: Record<string, string[]>, video: Record<string
       "/images/Rana_Pics/WduYIrls8yBaVjYF9cveA4vUvviAyEj4_PxqBl30jSs=_plaintext_638203427473031350.jpg",
       "/images/Rana_Pics/x1aMNPBRZmBgsqHiLA0wbfkq-xjShN60BZikbVOBcsU=_plaintext_638203427464070605.jpg",
       "/images/Rana_Pics/xKYgIVIRMSmqC9u2bVMSBgajFuHc0p7poBwBeQPnlYk=_plaintext_638203426863031034.jpg",
-      "/images/Rana_Pics/ZO1t5Ew_IPL2hf8R9xRwmkYq0XZWJo8LPaAkFRQgm-o=_plaintext_638203427519096122.jpg"
+      "/images/Rana_Pics/ZO1t5Ew_IPL2hf8R9xRwmkYq0XZWJo8LPaAkFRQgm-o=_plaintext_638203427519096122.jpg",
     ],
-    "slider": [
-      "/images/slider/IMG-20230522-WA0043.jpg"
-    ]
+    slider: ["/images/slider/IMG-20230522-WA0043.jpg"],
   },
   video: {
     // "root": [
@@ -309,7 +307,7 @@ export const mediaList: { images: Record<string, string[]>, video: Record<string
       "https://ranajainwebsite.blob.core.windows.net/home/Rana Clips/Morning Class 1.mp4",
       "https://ranajainwebsite.blob.core.windows.net/home/Rana Clips/Morning Exercise.mp4",
       "https://ranajainwebsite.blob.core.windows.net/home/Rana Clips/Squareface Rana.mp4",
-      "https://ranajainwebsite.blob.core.windows.net/home/Rana Clips/The Crying sausage.mp4"
+      "https://ranajainwebsite.blob.core.windows.net/home/Rana Clips/The Crying sausage.mp4",
     ],
     "Rana's What's app Videos": [
       "https://ranajainwebsite.blob.core.windows.net/home/Rana's What's app Videos/1st Change Nanga.mp4",
@@ -496,7 +494,7 @@ export const mediaList: { images: Record<string, string[]>, video: Record<string
       "https://ranajainwebsite.blob.core.windows.net/home/Rana's What's app Videos/With his Bade Dada.mp4",
       "https://ranajainwebsite.blob.core.windows.net/home/Rana's What's app Videos/With Nana in offc.mp4",
       "https://ranajainwebsite.blob.core.windows.net/home/Rana's What's app Videos/With the filmy junior brigade.mp4",
-      "https://ranajainwebsite.blob.core.windows.net/home/Rana's What's app Videos/गुड़ गुडी  massage.mp4"
-    ]
-  }
+      "https://ranajainwebsite.blob.core.windows.net/home/Rana's What's app Videos/गुड़ गुडी  massage.mp4",
+    ],
+  },
 };
