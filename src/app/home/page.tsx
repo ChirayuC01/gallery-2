@@ -8,6 +8,7 @@ import { encodeSpaces } from "@/helpers/encodeUrl";
 import MyCuteClips from "@/components/Home/MyCuteClips";
 import RanaIsTwo from "@/components/Home/RanaIsTwo";
 import RanaIsTwoSlider from "@/components/Home/RanaIsTwoSlider";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 // Login Modal Component
 const LoginModal = ({ isOpen, onClose, onSubmit }: any) => {
   const [username, setUsername] = useState("");
@@ -266,15 +267,15 @@ const Home = () => {
         <div className="flex gap-4 mt-4 md:mt-6">
           <button
             onClick={handlePrev}
-            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all"
+            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all cursor-pointer"
           >
-            ◀
+            <ChevronLeft />
           </button>
           <button
             onClick={handleNext}
-            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all"
+            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all cursor-pointer"
           >
-            ▶
+            <ChevronRight />
           </button>
         </div>
       </section>
