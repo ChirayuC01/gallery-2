@@ -64,7 +64,8 @@ export default function VideoCarousel() {
 
   return (
     <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
-      <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+      <h2 className="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 flex flex-col gap-5 py-2">
+        <p className="text-5xl font-bold text-red-600">Rana is Two</p>
         Growing Up : Year ONE to TWO Monthly Clips
       </h2>
 

@@ -213,7 +213,7 @@ const Home = () => {
       {/* <RanaIsTwo /> */}
 
       <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
-        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
           Rana is One
         </h2>
         <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
@@ -230,7 +230,7 @@ const Home = () => {
 
       {/* Movie Section */}
       <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
-        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
           Rana is Born...
         </h2>
         <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
@@ -247,7 +247,7 @@ const Home = () => {
 
       {/* Carousel Section */}
       <section className="relative flex flex-col items-center justify-center bg-gray-100 py-8 md:py-16 px-4">
-        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
+        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
           Me and My Family
         </h2>
         <div className="relative w-full md:w-[500px] h-[50vh] md:h-[80vh] overflow-hidden rounded-lg">

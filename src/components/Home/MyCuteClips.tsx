@@ -75,7 +75,7 @@ const MyCuteClips = () => {
   return (
     <section className="py-10 md:py-16 bg-gradient-to-b from-gray-50 to-gray-100 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl md:text-4xl font-bold mb-2 text-center text-gray-800">
+        <h2 className="text-2xl md:text-5xl font-bold mb-2 text-center text-gray-800 pb-3">
           My Cute Clips
         </h2>
 
@@ -180,13 +180,13 @@ const MyCuteClips = () => {
           </div>
 
           {/* Scroll indicator */}
-          <div className="flex justify-center mt-4 gap-1">
+          {/* <div className="flex justify-center mt-4 gap-1">
             {Array.from({ length: Math.min(5, videoTitles.length) }).map(
               (_, i) => (
                 <div key={i} className="w-2 h-2 rounded-full bg-gray-300" />
               )
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
