@@ -9,6 +9,7 @@ import MyCuteClips from "@/components/Home/MyCuteClips";
 import RanaIsTwo from "@/components/Home/RanaIsTwo";
 import RanaIsTwoSlider from "@/components/Home/RanaIsTwoSlider";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import ProtectedRoute from "@/components/ProtectedRoute";
 // Login Modal Component
 const LoginModal = ({ isOpen, onClose, onSubmit }: any) => {
   const [username, setUsername] = useState("");
@@ -134,60 +135,64 @@ const Home = () => {
   }, [activeSlide]);
 
   return (
-    <>
-      <Head>
-        <title>Rana's World</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
-      {/* Family Section */}
-      <section className="py-8 md:py-16 bg-white text-center px-4">
-        <div className="max-w-xl mx-auto">
-          <Image
-            src="/images/main1.jpg"
-            alt="Main"
-            width={600}
-            height={400}
-            className="w-full rounded-xl shadow-lg"
+    <ProtectedRoute>
+      <>
+        <Head>
+          <title>Rana's World</title>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
           />
+        </Head>
+
+        {/* Family Section */}
+        <section className="py-8 md:py-16 bg-white text-center px-4">
+          <div className="max-w-xl mx-auto">
+            <Image
+              src="/images/main1.jpg"
+              alt="Main"
+              width={600}
+              height={400}
+              className="w-full rounded-xl shadow-lg"
+            />
+          </div>
+        </section>
+
+        {/* Hero Section */}
+        <div>
+          <section className="section top-section">
+            <div className="content-container content-theme-dark">
+              <div className="content-inner">
+                <div className="content-center">
+                  <h1 className="text-2xl md:text-4xl">Rana's World</h1>
+                  <p>BEGAN</p>
+                  <p>
+                    <span className="text-big">23</span> April
+                    <span className="text-big">23</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="section bottom-section">
+            <div className="content-container content-theme-light">
+              <div className="content-inner">
+                <div className="content-center">
+                  <h1 className="text-2xl md:text-4xl">Rana's World</h1>
+                  <p>BEGAN</p>
+                  <p>
+                    <span className="text-big">23</span> April
+                    <span className="text-big">23</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+        <RanaIsTwoSlider />
 
-      {/* Hero Section */}
-      <div>
-        <section className="section top-section">
-          <div className="content-container content-theme-dark">
-            <div className="content-inner">
-              <div className="content-center">
-                <h1 className="text-2xl md:text-4xl">Rana's World</h1>
-                <p>BEGAN</p>
-                <p>
-                  <span className="text-big">23</span> April
-                  <span className="text-big">23</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section bottom-section">
-          <div className="content-container content-theme-light">
-            <div className="content-inner">
-              <div className="content-center">
-                <h1 className="text-2xl md:text-4xl">Rana's World</h1>
-                <p>BEGAN</p>
-                <p>
-                  <span className="text-big">23</span> April
-                  <span className="text-big">23</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <RanaIsTwoSlider />
-
-      {/* <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+        {/* <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
         <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
           Rana is two
         </h2>
@@ -210,78 +215,78 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-      {/* <RanaIsTwo /> */}
+        {/* <RanaIsTwo /> */}
 
-      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
-        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
-          Rana is One
-        </h2>
-        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
-          <div className="relative w-full h-full">
-            <iframe
-              src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
-              className="w-full h-full rounded-lg shadow-lg"
-              allow="autoplay"
-              allowFullScreen={true}
-            ></iframe>
+        <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+          <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
+            Rana is One
+          </h2>
+          <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
+            <div className="relative w-full h-full">
+              <iframe
+                src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
+                className="w-full h-full rounded-lg shadow-lg"
+                allow="autoplay"
+                allowFullScreen={true}
+              ></iframe>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Movie Section */}
-      <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
-        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
-          Rana is Born...
-        </h2>
-        <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
-          <div className="relative w-full h-full">
-            <iframe
-              src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
-              className="w-full h-full rounded-lg shadow-lg"
-              allow="autoplay"
-              allowFullScreen={true}
-            ></iframe>
+        {/* Movie Section */}
+        <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+          <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
+            Rana is Born...
+          </h2>
+          <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
+            <div className="relative w-full h-full">
+              <iframe
+                src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
+                className="w-full h-full rounded-lg shadow-lg"
+                allow="autoplay"
+                allowFullScreen={true}
+              ></iframe>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Carousel Section */}
-      <section className="relative flex flex-col items-center justify-center bg-gray-100 py-8 md:py-16 px-4">
-        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
-          Me and My Family
-        </h2>
-        <div className="relative w-full md:w-[500px] h-[50vh] md:h-[80vh] overflow-hidden rounded-lg">
-          {images.map((img, index) => (
-            <Image
-              key={index}
-              src={img}
-              alt={`Carousel Image ${index + 1}`}
-              layout="fill"
-              objectFit="contain"
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                index === activeSlide ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
-        </div>
-        <div className="flex gap-4 mt-4 md:mt-6">
-          <button
-            onClick={handlePrev}
-            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all cursor-pointer"
-          >
-            <ChevronLeft />
-          </button>
-          <button
-            onClick={handleNext}
-            className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all cursor-pointer"
-          >
-            <ChevronRight />
-          </button>
-        </div>
-      </section>
+        {/* Carousel Section */}
+        <section className="relative flex flex-col items-center justify-center bg-gray-100 py-8 md:py-16 px-4">
+          <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-6">
+            Me and My Family
+          </h2>
+          <div className="relative w-full md:w-[500px] h-[50vh] md:h-[80vh] overflow-hidden rounded-lg">
+            {images.map((img, index) => (
+              <Image
+                key={index}
+                src={img}
+                alt={`Carousel Image ${index + 1}`}
+                layout="fill"
+                objectFit="contain"
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === activeSlide ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex gap-4 mt-4 md:mt-6">
+            <button
+              onClick={handlePrev}
+              className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all cursor-pointer"
+            >
+              <ChevronLeft />
+            </button>
+            <button
+              onClick={handleNext}
+              className="bg-gray-700 text-white px-3 py-1 md:px-4 md:py-2 rounded-full shadow-md hover:bg-gray-900 transition-all cursor-pointer"
+            >
+              <ChevronRight />
+            </button>
+          </div>
+        </section>
 
-      {/* Cute Clips Section */}
-      {/* <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
+        {/* Cute Clips Section */}
+        {/* <section className="py-8 md:py-16 bg-gray-100 text-center px-4">
         <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
           My Cute Clips
         </h2>
@@ -313,10 +318,10 @@ const Home = () => {
           ))}
         </div>
       </section> */}
-      <MyCuteClips />
+        <MyCuteClips />
 
-      {/* Floating Home Button */}
-      {/* <div
+        {/* Floating Home Button */}
+        {/* <div
         onClick={handleSignpostClick}
         className="fixed right-2 top-[50%] bottom-[50%] bg-red-600 text-white p-5 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
       >
@@ -324,23 +329,24 @@ const Home = () => {
           Nana's Signpost for Rana
         </h2>
       </div> */}
-      {/* Floating Home Button */}
-      <div
-        onClick={() => router.push("/gallery")}
-        className="fixed right-2 bottom-[5%] bg-red-600 text-white p-2 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
-      >
-        <h2 className="text-sm md:text-lg font-semibold">
-          Rana's Photo & Video Gallery
-        </h2>
-      </div>
+        {/* Floating Home Button */}
+        <div
+          onClick={() => router.push("/gallery")}
+          className="fixed right-2 bottom-[5%] bg-red-600 text-white p-2 flex items-center rounded-lg cursor-pointer shadow-lg hover:bg-red-700 transition-all z-50"
+        >
+          <h2 className="text-sm md:text-lg font-semibold">
+            Rana's Photo & Video Gallery
+          </h2>
+        </div>
 
-      {/* Login Modal */}
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        onClose={() => setIsLoginModalOpen(false)}
-        onSubmit={handleLoginSuccess}
-      />
-    </>
+        {/* Login Modal */}
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          onClose={() => setIsLoginModalOpen(false)}
+          onSubmit={handleLoginSuccess}
+        />
+      </>
+    </ProtectedRoute>
   );
 };
 

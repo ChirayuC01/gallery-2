@@ -10,12 +10,24 @@ export default function LoginPage() {
   const [loginError, setLoginError] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    // Check if user is already logged in
+    const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+    if (isAuthenticated) {
+      router.push("/home");
+    }
+  }, [router]);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (username === "chachu" && password === "dadarananana") {
+      // Set authentication in localStorage and cookies
+      localStorage.setItem("isAuthenticated", "true");
+      document.cookie = "isAuthenticated=true; path=/; max-age=86400"; // 24 hours
+
+      // Update state
       setLoginSuccess(true);
       setLoginError(false);
-      // We'll redirect after setting loginSuccess to true
     } else {
       setLoginError(true);
       setLoginSuccess(false);
@@ -25,12 +37,6 @@ export default function LoginPage() {
   // Use useEffect to handle the redirect after state has been updated
   useEffect(() => {
     if (loginSuccess) {
-      // // Short timeout to show success message briefly before redirect
-      // const redirectTimer = setTimeout(() => {
-      //   router.push("/home");
-      // }, 1000);
-      // return () => clearTimeout(redirectTimer);
-
       router.push("/home");
     }
   }, [loginSuccess, router]);
@@ -43,13 +49,6 @@ export default function LoginPage() {
       </Head>
 
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-        {/* {loginSuccess ? (
-          <div className="text-center text-green-600 font-medium">
-            <h2 className="text-xl mb-2">Login Successful!</h2>
-            <p>Welcome, {username}!</p>
-            <p className="text-sm mt-2">Redirecting to home page...</p>
-          </div>
-        ) : ( */}
         <>
           <h1 className="text-2xl font-bold text-center mb-6">LOGIN</h1>
 
@@ -93,14 +92,13 @@ export default function LoginPage() {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 uppercase text-sm"
+                className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 uppercase text-sm cursor-pointer transition-colors duration-300"
               >
                 Submit
               </button>
             </div>
           </form>
         </>
-        {/* )} */}
       </div>
     </div>
   );

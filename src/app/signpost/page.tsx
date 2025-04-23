@@ -1,5 +1,6 @@
 "use client";
 import Gallery from "@/components/Gallery";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import VideoGallery from "@/components/VideoGallery";
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
@@ -254,115 +255,117 @@ const LifeLessons = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4 text-black">
-      <div className="max-w-5xl mx-auto">
-        <div className="wrapper wrap2">
-          <div className="container text-center">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 font-[Cinzel]">
-              Rana Gyan Churan : 21 Mantras till you are 21
-            </h1>
-            <p className="text-lg md:text-xl font-[Cinzel]">
-              For him - for his parents and for the universe that brings him up
-              !!
-            </p>
-          </div>
-        </div>
-
-        {/* Age range selector */}
-        <div className="flex flex-wrap justify-center gap-4 pt-10 mb-8">
-          {lessons.map((lesson) => (
-            <button
-              key={lesson.id}
-              onClick={() => openModal(lesson)}
-              className="h-[130px] shadow-md border border-[#3F51B5] rounded-lg px-5 py-3 flex justify-center items-center font-bold text-[20px] text-[#3F51B5] font-poppins transition-all hover:bg-[#3F51B5] hover:text-white cursor-pointer"
-            >
-              {lesson.ageRange}
-            </button>
-          ))}
-        </div>
-
-        {/* Modal */}
-        {isModalOpen && activeLesson && (
-          <div className="fixed inset-0 w-full flex items-center justify-center bg-black bg-opacity-50 p-4">
-            <div className="bg-white rounded-lg shadow-lg w-full p-6 max-h-[90vh] overflow-y-scroll relative">
-              {/* Close Button */}
-              <button
-                onClick={closeModal}
-                className="absolute top-3 right-3 text-slate-400 hover:text-gray-700 text-5xl cursor-pointer"
-              >
-                &times;
-              </button>
-
-              {/* Lesson Title */}
-              <h2 className="text-2xl font-bold mb-4 text-indigo-700">
-                {activeLesson.ageRange}
-              </h2>
-
-              {/* Topics Display */}
-              {activeLesson.topics.map((topic, index) => {
-                console.log("topic----", topic, index);
-                console.log("activeLesson----", activeLesson);
-                console.log("activeAge----", activeAge);
-
-                return (
-                  <div key={index} className="mb-6 last:mb-0">
-                    <h3 className="text-xl font-semibold mb-2 text-indigo-600">
-                      {topic.title}
-                    </h3>
-                    {topic.points.length > 0 ? (
-                      <ul className="space-y-2">
-                        {topic.points.map((point, idx) => (
-                          <li
-                            key={idx}
-                            className="pl-4 border-l-2 border-indigo-300"
-                          >
-                            <p className="text-gray-700">{point}</p>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-gray-500 italic">
-                        No details provided.
-                      </p>
-                    )}
-                  </div>
-                );
-              })}
-
-              {/* Toggle Buttons */}
-              {activeLesson.ageRange === "Years 0-3" && (
-                <>
-                  <div className="flex gap-4 my-4">
-                    <button
-                      className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
-                        activeTab === "photos"
-                          ? "bg-indigo-600"
-                          : "bg-gray-400 hover:bg-gray-500"
-                      }`}
-                      onClick={() => setActiveTab("photos")}
-                    >
-                      Photos
-                    </button>
-                    <button
-                      className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
-                        activeTab === "videos"
-                          ? "bg-indigo-600"
-                          : "bg-gray-400 hover:bg-gray-500"
-                      }`}
-                      onClick={() => setActiveTab("videos")}
-                    >
-                      Videos
-                    </button>
-                  </div>
-                  {/* Conditional Rendering */}
-                  {activeTab === "photos" ? <Gallery /> : <VideoGallery />}
-                </>
-              )}
+    <ProtectedRoute>
+      <div className="min-h-screen bg-gray-100 py-8 px-4 text-black">
+        <div className="max-w-5xl mx-auto">
+          <div className="wrapper wrap2">
+            <div className="container text-center">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 font-[Cinzel]">
+                Rana Gyan Churan : 21 Mantras till you are 21
+              </h1>
+              <p className="text-lg md:text-xl font-[Cinzel]">
+                For him - for his parents and for the universe that brings him
+                up !!
+              </p>
             </div>
           </div>
-        )}
+
+          {/* Age range selector */}
+          <div className="flex flex-wrap justify-center gap-4 pt-10 mb-8">
+            {lessons.map((lesson) => (
+              <button
+                key={lesson.id}
+                onClick={() => openModal(lesson)}
+                className="h-[130px] shadow-md border border-[#3F51B5] rounded-lg px-5 py-3 flex justify-center items-center font-bold text-[20px] text-[#3F51B5] font-poppins transition-all hover:bg-[#3F51B5] hover:text-white cursor-pointer"
+              >
+                {lesson.ageRange}
+              </button>
+            ))}
+          </div>
+
+          {/* Modal */}
+          {isModalOpen && activeLesson && (
+            <div className="fixed inset-0 w-full flex items-center justify-center bg-black bg-opacity-50 p-4">
+              <div className="bg-white rounded-lg shadow-lg w-full p-6 max-h-[90vh] overflow-y-scroll relative">
+                {/* Close Button */}
+                <button
+                  onClick={closeModal}
+                  className="absolute top-3 right-3 text-slate-400 hover:text-gray-700 text-5xl cursor-pointer"
+                >
+                  &times;
+                </button>
+
+                {/* Lesson Title */}
+                <h2 className="text-2xl font-bold mb-4 text-indigo-700">
+                  {activeLesson.ageRange}
+                </h2>
+
+                {/* Topics Display */}
+                {activeLesson.topics.map((topic, index) => {
+                  console.log("topic----", topic, index);
+                  console.log("activeLesson----", activeLesson);
+                  console.log("activeAge----", activeAge);
+
+                  return (
+                    <div key={index} className="mb-6 last:mb-0">
+                      <h3 className="text-xl font-semibold mb-2 text-indigo-600">
+                        {topic.title}
+                      </h3>
+                      {topic.points.length > 0 ? (
+                        <ul className="space-y-2">
+                          {topic.points.map((point, idx) => (
+                            <li
+                              key={idx}
+                              className="pl-4 border-l-2 border-indigo-300"
+                            >
+                              <p className="text-gray-700">{point}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-gray-500 italic">
+                          No details provided.
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+
+                {/* Toggle Buttons */}
+                {activeLesson.ageRange === "Years 0-3" && (
+                  <>
+                    <div className="flex gap-4 my-4">
+                      <button
+                        className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
+                          activeTab === "photos"
+                            ? "bg-indigo-600"
+                            : "bg-gray-400 hover:bg-gray-500"
+                        }`}
+                        onClick={() => setActiveTab("photos")}
+                      >
+                        Photos
+                      </button>
+                      <button
+                        className={`px-4 py-2 rounded-lg text-white font-semibold cursor-pointer ${
+                          activeTab === "videos"
+                            ? "bg-indigo-600"
+                            : "bg-gray-400 hover:bg-gray-500"
+                        }`}
+                        onClick={() => setActiveTab("videos")}
+                      >
+                        Videos
+                      </button>
+                    </div>
+                    {/* Conditional Rendering */}
+                    {activeTab === "photos" ? <Gallery /> : <VideoGallery />}
+                  </>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </ProtectedRoute>
   );
 };
 
