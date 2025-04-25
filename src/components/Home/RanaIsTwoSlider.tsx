@@ -13,51 +13,51 @@ export default function VideoCarousel() {
 
   const videoLinks = [
     {
-      url: "https://drive.google.com/file/d/1VO5JszOD0jrkYD85zA1QSW69sjNr6k0D/preview",
+      url: "https://drive.google.com/file/d/1wHpSgiIN-cpmMmy8Mq6G5PWYZ0E9w6Mj/preview",
       title: "Rana @ 13 months (May 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1XLmj3EG20JQS39sC2F7fAWibxfd12Pze/preview",
+      url: "https://drive.google.com/file/d/1H7rIQ1qMPHJjaPOzWQpnE_WNGhaxDwFk/preview",
       title: "Rana @ 14 months (June 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1yTOn87kIpiENrBjy8Y_1Ya9smMrMyPdH/preview",
+      url: "https://drive.google.com/file/d/11nGC43q3owlC1ZAn-0FOEBGedd-RQU9U/preview",
       title: "Rana @ 15 months (July 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1aci1xOCJ2U_CDwnMyfN3xd0F9IpYR2-l/preview",
+      url: "https://drive.google.com/file/d/1HfzCPBdPQAaj5NJllUXGRvbJI1QHr0n6/preview",
       title: "Rana @ 16 months (August 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1SiUqKyYg2-w37NXSaqm6upKqRmaCw2sX/preview",
+      url: "https://drive.google.com/file/d/1jBYmjUL2_e0sGd-t8fGxLVJQbIMHFHSI/preview",
       title: "Rana @ 17 months (September 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1L6UFW4RVwfsHpgtFR9gFel3IKJHMXIIX/preview",
+      url: "https://drive.google.com/file/d/1K-WuySAcJJkBMg3iZvipabZPx3nZi1_O/preview",
       title: "Rana @ 18 months (October 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1DpgTSKckvYSszyj0JiQMQ8p0cKeNC5Af/preview",
+      url: "https://drive.google.com/file/d/1tK_c1sZLSydhj8Ar2PSxg4Jo_8otnreK/preview",
       title: "Rana @ 19 months (November 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1AVCzOq1hlJ2hLxvCeggtT5N5q3Foqls5/preview",
+      url: "https://drive.google.com/file/d/1xUebgm2wmFqLXLlGgxuFCf1y236DcxTX/preview",
       title: "Rana @ 20 months (December 24)",
     },
     {
-      url: "https://drive.google.com/file/d/1Q2yC8bvtZxW18q7oKr2knBtVaKD2MbJq/preview",
+      url: "https://drive.google.com/file/d/1bAEQe-pW9JeK7whTWOTYjmVmdzdqMIz_/preview",
       title: "Rana @ 21 months (January 25)",
     },
     {
-      url: "https://drive.google.com/file/d/1rsBRxGBrDm--b240ppKo3eAuneqxg5yq/preview",
+      url: "https://drive.google.com/file/d/1s2WcW1oBspX09AvyPbVS2RZjNhtH9d_M/preview",
       title: "Rana @ 22 months (February 25)",
     },
     {
-      url: "https://drive.google.com/file/d/1SsE5nOzH6OLmgdak9keEOpZ4ZwVx39Hx/preview",
+      url: "https://drive.google.com/file/d/148ZJIhY5ZoB5s0as9nVjrbAOPLgKXNU7/preview",
       title: "Rana @ 23 months (March 25)",
     },
     {
-      url: "https://drive.google.com/file/d/1Wr3tmbSuVztXXiYH0ES_HwSLOppQKsXg/preview",
+      url: "https://drive.google.com/file/d/1ocFVmhYqAZdE_VGELufTML3HAeTuWe2z/preview",
       title: "Rana @ 24 months (April 25)",
     },
   ];
