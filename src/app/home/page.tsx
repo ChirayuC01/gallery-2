@@ -224,7 +224,7 @@ const Home = () => {
           <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
             <div className="relative w-full h-full">
               <iframe
-                src="https://drive.google.com/file/d/1i0mSM_Cw0rmL-TeZWA1tAeR6utpaN1bN/preview"
+                src="https://drive.google.com/file/d/1pz7n4lO7pwupK4RDxrTdWnR69qcXv96B/preview"
                 className="w-full h-full rounded-lg shadow-lg"
                 allow="autoplay"
                 allowFullScreen={true}
@@ -241,7 +241,7 @@ const Home = () => {
           <div className="w-full max-w-4xl mx-auto h-[300px] md:h-[500px]">
             <div className="relative w-full h-full">
               <iframe
-                src="https://drive.google.com/file/d/1hq1wNUKeaTBU_mavWR5EEmdpkUc7LiA7/preview"
+                src="https://drive.google.com/file/d/1w6T1ezLXS-lpOpgxsuzgKp2jASDDGVu7/preview"
                 className="w-full h-full rounded-lg shadow-lg"
                 allow="autoplay"
                 allowFullScreen={true}
